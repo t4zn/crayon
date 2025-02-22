@@ -2,6 +2,7 @@
 #define CRAYON_H
 
 #include <stdio.h>
+#include <stdarg.h>
 
 // Standard Colors
 #define red     "\x1b[31m"
@@ -43,9 +44,16 @@
 #define color(code) "\x1b[38;5;" #code "m"
 #define bg_color(code) "\x1b[48;5;" #code "m"
 
-// Function to Print Colored Text
-void printz(const char *color, const char *text) {
-    printf("%s%s%s", color, text, reset"\n"); 
+
+
+// Updated printz() Function
+void printz(const char *color, const char *format, ...) {
+    va_list args;
+    va_start(args, format); 
+    printf("%s", color);   
+    vprintf(format, args); 
+    printf("%s", reset"\n"); 
+    va_end(args);
 }
 
 // Function to Print Info About Taizun
