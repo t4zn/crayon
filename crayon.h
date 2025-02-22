@@ -153,9 +153,11 @@ void scanz(const char *color, const char *format, void *var) {
 }
 
 void about() {
-    printf(bold cyan "\n[INFO] Taizun Kaptan - AI Developer \n" reset);
+    printf(bold purple "\n[INFO] Taizun Kaptan - AI Developer \n" reset);
     printf(bold yellow "Passionate about AI, coding, and building unique projects.\n" reset);
     printf(bold magenta "Follow my journey in AI and development! \n" reset);
+    printf(bold magenta "View complete documentation at:\nhttps://github.com/t4zn/crayon/blob/main/README.md \n" reset);
+
 }
   
 void banner(const char *color, const char *text) {
