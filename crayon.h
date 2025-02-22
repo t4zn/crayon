@@ -1,14 +1,17 @@
 #ifndef CRAYON_H
 #define CRAYON_H
-
 #include <stdio.h>
 #include <stdarg.h>
 #ifdef _WIN32
-    #include <conio.h>  // For Windows `getch()`
+    #include <conio.h>
+    #include <windows.h>
+    #define SLEEP(ms) Sleep(ms)
 #else
-    #include <termios.h>  // For Linux/macOS `tcsetattr()`
+    #include <termios.h>
     #include <unistd.h>
+    #define SLEEP(ms) usleep((ms) * 1000)
 #endif
+
 
 
 // Standard Foreground Colors
@@ -114,10 +117,6 @@
 // 256-Color Support
 #define color(code) "\x1b[38;5;" #code "m"
 #define bg_color(code) "\x1b[48;5;" #code "m"
-
-
-
-// Updated printz() Function
 void printz(const char *color, const char *format, ...) {
     va_list args;
     va_start(args, format); 
@@ -128,41 +127,44 @@ void printz(const char *color, const char *format, ...) {
 }
 
 void scanz(const char *color, const char *format, void *var) {
-    printf("%s", color);  // Apply input color
+    printf("%s", color);
 
 #ifdef _WIN32
-    // Windows: Use getch() for character-by-character input
     int ch, value = 0;
-    while ((ch = getch()) != '\r') {  // Until Enter key
-        if (ch >= '0' && ch <= '9') {  // Restrict to numbers (modify as needed)
-            printf("%c", ch);  // Print character in color
-            value = value * 10 + (ch - '0');  // Convert to integer
+    while ((ch = getch()) != '\r') {
+        if (ch >= '0' && ch <= '9') {
+            printf("%c", ch);
+            value = value * 10 + (ch - '0');
         }
     }
-    *((int*)var) = value;  // Store final integer input
+    *((int*)var) = value;
 
 #else
-    // Linux/macOS: Disable input buffering to show real-time color
     struct termios oldt, newt;
     tcgetattr(STDIN_FILENO, &oldt);
     newt = oldt;
-    newt.c_lflag &= ~(ICANON | ECHO);  // Disable buffering & echo
+    newt.c_lflag &= ~(ICANON | ECHO);
     tcsetattr(STDIN_FILENO, TCSANOW, &newt);
-
-    scanf(format, var);  // Standard input
-
-    // Restore terminal settings
+    scanf(format, var); 
     tcsetattr(STDIN_FILENO, TCSANOW, &oldt);
 #endif
 
-    printf("%s", reset"\n");  // Reset color after input
+    printf("%s", reset"\n");
 }
 
-// Function to Print Info About Taizun
 void about() {
     printf(bold cyan "\n[INFO] Taizun Kaptan - AI Developer \n" reset);
     printf(bold yellow "Passionate about AI, coding, and building unique projects.\n" reset);
     printf(bold magenta "Follow my journey in AI and development! \n" reset);
 }
-
+  
+void banner(const char *color, const char *text) {
+    printf("%s", color);
+    for (int i = 0; text[i] != '\0'; i++) {
+        printf("%c", text[i]);
+        fflush(stdout);
+        SLEEP(50);
+    }
+    printf("%s", reset"\n");
+}
 #endif // CRAYON_H
