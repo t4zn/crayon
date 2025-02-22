@@ -160,7 +160,8 @@ void about() {
   
 void banner(const char *color, const char *text) {
     printf("%s", color);
-    for (int i = 0; text[i] != '\0'; i++) {
+    int i;
+    for (i = 0; text[i] != '\0'; i++) {
         printf("%c", text[i]);
         fflush(stdout);
         SLEEP(50);
