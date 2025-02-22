@@ -3,6 +3,13 @@
 
 #include <stdio.h>
 #include <stdarg.h>
+#ifdef _WIN32
+    #include <conio.h>  // For Windows `getch()`
+#else
+    #include <termios.h>  // For Linux/macOS `tcsetattr()`
+    #include <unistd.h>
+#endif
+
 
 // Standard Foreground Colors
 #define red         "\x1b[31m"
@@ -118,6 +125,37 @@ void printz(const char *color, const char *format, ...) {
     vprintf(format, args); 
     printf("%s", reset"\n"); 
     va_end(args);
+}
+
+void scanz(const char *color, const char *format, void *var) {
+    printf("%s", color);  // Apply input color
+
+#ifdef _WIN32
+    // Windows: Use getch() for character-by-character input
+    int ch, value = 0;
+    while ((ch = getch()) != '\r') {  // Until Enter key
+        if (ch >= '0' && ch <= '9') {  // Restrict to numbers (modify as needed)
+            printf("%c", ch);  // Print character in color
+            value = value * 10 + (ch - '0');  // Convert to integer
+        }
+    }
+    *((int*)var) = value;  // Store final integer input
+
+#else
+    // Linux/macOS: Disable input buffering to show real-time color
+    struct termios oldt, newt;
+    tcgetattr(STDIN_FILENO, &oldt);
+    newt = oldt;
+    newt.c_lflag &= ~(ICANON | ECHO);  // Disable buffering & echo
+    tcsetattr(STDIN_FILENO, TCSANOW, &newt);
+
+    scanf(format, var);  // Standard input
+
+    // Restore terminal settings
+    tcsetattr(STDIN_FILENO, TCSANOW, &oldt);
+#endif
+
+    printf("%s", reset"\n");  // Reset color after input
 }
 
 // Function to Print Info About Taizun
