@@ -2,6 +2,13 @@
 
 Crayon.h is a powerful C header file that allows developers to easily add colors, text effects, and formatting to their terminal output. This library enhances text display using ANSI escape codes, making terminal output more engaging and visually appealing.
 
+## Available Colors
+**Text Colour Scheme:**
+![Crayon.h Logo](https://github.com/t4zn/crayon/blob/main/forecolors.png?raw=true)
+**Background Colour Scheme:**
+![Crayon.h Logo](https://github.com/t4zn/crayon/blob/main/bgcolor.webp?raw=true)
+
+
 ## Features
 
 * **Foreground and Background Colors:** Over 30 colors, including extended colors like purple, coral, and bronze.
@@ -50,10 +57,6 @@ Example:
 * **Rainbow Effect:** `rainbow("Hello World!");`
 * **Neon Effect:** `neon("Glowing Text!");`
 * **Coffee Theme:** `coffee("Smooth and Warm Text!");`
-
-## Available Colors
-![Crayon.h Logo](https://github.com/t4zn/crayon/blob/main/forecolors.png?raw=true)
-
 
 ## About
 
