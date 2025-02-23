@@ -195,7 +195,7 @@ void rainbow(const char *text) {
 void about() {
     rainbow("\n[INFO] Taizun Kaptan - AI Developer \n");
     rainbow( "Passionate about AI, coding, and building unique projects.\n");
-    rainbow( "View documentation: \n");
+    rainbow( "View color codes and documentation: \n");
     neon("https://github.com/t4zn/crayon/blob/main/README.md \n");
 }
   
