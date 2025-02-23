@@ -117,6 +117,12 @@
 // 256-Color Support
 #define color(code) "\x1b[38;5;" #code "m"
 #define bg_color(code) "\x1b[48;5;" #code "m"
+
+// Grayscale shades
+#define gray_dark    "\x1b[38;5;240m"
+#define gray_medium  "\x1b[38;5;244m"
+#define gray_light   "\x1b[38;5;248m"
+
 void printz(const char *color, const char *format, ...) {
     va_list args;
     va_start(args, format); 
@@ -151,23 +157,56 @@ void scanz(const char *color, const char *format, void *var) {
 
     printf("%s", reset"\n");
 }
+void coffee(const char *text) {
+    const char *tones[] = {brown, beige};
+    int tone_count = 2;
+    
+    for (int i = 0; text[i] != '\0'; i++) {
+        printf("%s%c", tones[i % tone_count], text[i]);
+        fflush(stdout);
+        SLEEP(50);  // 50ms delay between each character
+    }
+    printf("%s\n", reset);
+}
+
+void neon(const char *text) {
+    const char *colors[] = {bright_red, cyan};
+    int color_count = 2;
+    
+    for (int i = 0; text[i] != '\0'; i++) {
+        printf("%s%c", colors[i % color_count], text[i]);
+        fflush(stdout);
+        SLEEP(50);  // 50ms delay between each character
+    }
+    printf("%s\n", reset);
+}
+void rainbow(const char *text) {
+    const char *colors[] = {red, yellow, green, cyan, blue, magenta};
+    int color_count = 6;
+    
+    for (int i = 0; text[i] != '\0'; i++) {
+        printf("%s%c", colors[i % color_count], text[i]);
+        fflush(stdout);
+        SLEEP(50);
+    }
+    printf("%s", reset"\n");
+}
 
 void about() {
-    printf(bold purple "\n[INFO] Taizun Kaptan - AI Developer \n" reset);
-    printf(bold yellow "Passionate about AI, coding, and building unique projects.\n" reset);
-    printf(bold magenta "Follow my journey in AI and development! \n" reset);
-    printf(bold magenta "View complete documentation at:\nhttps://github.com/t4zn/crayon/blob/main/README.md \n" reset);
-
+    rainbow("\n[INFO] Taizun Kaptan - AI Developer \n");
+    rainbow( "Passionate about AI, coding, and building unique projects.\n");
+    rainbow( "View documentation: \n");
+    neon("https://github.com/t4zn/crayon/blob/main/README.md \n");
 }
   
 void banner(const char *color, const char *text) {
     printf("%s", color);
-    int i;
-    for (i = 0; text[i] != '\0'; i++) {
+    for (int i = 0; text[i] != '\0'; i++) {
         printf("%c", text[i]);
         fflush(stdout);
         SLEEP(50);
     }
     printf("%s", reset"\n");
 }
+
 #endif // CRAYON_H
