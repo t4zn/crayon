@@ -52,7 +52,8 @@ Example:
 * **Coffee Theme:** `coffee("Smooth and Warm Text!");`
 
 ## Available Colors
-https://user-images.githubusercontent.com/995050/47952855-ecb12480-df75-11e8-89d4-ac26c50e80b9.png
+![Crayon.h Logo](https://github.com/t4zn/crayon/blob/main/forecolors.png?raw=true)
+
 
 ## About
 
