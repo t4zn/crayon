@@ -58,4 +58,5 @@ Example:
 
 Crayon.h was created by  **Taizun Kaptan** , an AI developer passionate about coding and creative programming. This library was designed to make terminal output visually stunning while maintaining simplicity in usage.
 
-For full documentation, visit:  [Crayon](`https://github.com/t4zn/crayon/blob/main/README.md`)
+For full documentation, visit:
+`https://github.com/t4zn/crayon/blob/main/README.md`
