@@ -183,8 +183,8 @@ void neon(const char *text) {
 void rainbow(const char *text) {
     const char *colors[] = {red, yellow, green, cyan, blue, magenta};
     int color_count = 6;
-    
-    for (int i = 0; text[i] != '\0'; i++) {
+    int i;
+    for ( i = 0; text[i] != '\0'; i++) {
         printf("%s%c", colors[i % color_count], text[i]);
         fflush(stdout);
         SLEEP(50);
@@ -201,7 +201,8 @@ void about() {
   
 void banner(const char *color, const char *text) {
     printf("%s", color);
-    for (int i = 0; text[i] != '\0'; i++) {
+    int i;
+    for ( i = 0; text[i] != '\0'; i++) {
         printf("%c", text[i]);
         fflush(stdout);
         SLEEP(50);
