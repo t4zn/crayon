@@ -13,14 +13,13 @@ Crayon.h is a powerful C header file that allows developers to easily add colors
 `printz(bg_color(226), "Yellow Background!");`
 ![Crayon.h Logo](https://github.com/t4zn/crayon/blob/main/bgcolor.png?raw=true)
 
+**Standard:** red, blue, yellow, green, black, white, cyan, magenta
 
-## Features
+**Extended:** orange, purple, gray, brown, pink, light_blue, navy, light_green, dark_green, light_gray, charcoal, maroon, teal, lime, olive, gold, silver, beige, ivory, violet, crimson, lavender, turquoise, amber, bronze, peach, mustard, coral, burgundy
 
-* **Foreground and Background Colors:** Over 30 colors, including extended colors like purple, coral, and bronze.
-* **Formatting Effects:** Supports bold, underline, blinking, and inverted text.
-* **Custom Print Functions:** `printz()`, `scanz()`, and `banner()` for styled text input and output.
-* **Special Text Effects:** Neon, Rainbow, Coffee, and more.
-* **Cross-Platform Compatibility:** Works on both Windows and Linux/macOS terminals.
+**Backgrounds:** bg_red, bg_blue, bg_yellow, bg_green, bg_black, bg_white, bg_cyan, bg_magenta, and extended background colors.
+
+**Special Effects:** bold, underline, blink, invert, reset
 
 ## Installation
 
