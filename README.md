@@ -4,13 +4,13 @@ Crayon.h is a powerful C header file that allows developers to easily add colors
 
 ## Available Colors
 **Text Colour Scheme:**
-printz(color(125), "This is a custom purple text!");
+'printz(color(125), "This is a custom purple text!");'
 
  
 ![Crayon.h Logo](https://github.com/t4zn/crayon/blob/main/forecolors.png?raw=true)
 **Background Colour Scheme:**
 
-printz(bg_color(226), "Yellow Background!");
+'printz(bg_color(226), "Yellow Background!");'
 ![Crayon.h Logo](https://github.com/t4zn/crayon/blob/main/bgcolor.webp?raw=true)
 
 
