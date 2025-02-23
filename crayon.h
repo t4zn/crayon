@@ -193,10 +193,10 @@ void rainbow(const char *text) {
 }
 
 void about() {
-    rainbow("\n[INFO] Taizun Kaptan - AI Developer \n");
-    rainbow( "Passionate about AI, coding, and building unique projects.\n");
-    rainbow( "View color codes and documentation: \n");
-    neon("https://github.com/t4zn/crayon/blob/main/README.md \n");
+    banner(bg_color(24), "\n[INFO] Taizun Kaptan - AI Developer \n");
+    banner(bg_color(24), "Passionate about AI, coding, and building unique projects.\n");
+    banner(bg_color(24),  "View color codes and documentation: \n");
+    rainbow("https://github.com/t4zn/crayon/blob/main/README.md \n");
 }
   
 void banner(const char *color, const char *text) {
