@@ -160,8 +160,8 @@ void scanz(const char *color, const char *format, void *var) {
 void coffee(const char *text) {
     const char *tones[] = {brown, beige};
     int tone_count = 2;
-    
-    for (int i = 0; text[i] != '\0'; i++) {
+    int i;
+    for (i = 0; text[i] != '\0'; i++) {
         printf("%s%c", tones[i % tone_count], text[i]);
         fflush(stdout);
         SLEEP(50);  // 50ms delay between each character
@@ -172,8 +172,8 @@ void coffee(const char *text) {
 void neon(const char *text) {
     const char *colors[] = {bright_red, cyan};
     int color_count = 2;
-    
-    for (int i = 0; text[i] != '\0'; i++) {
+    int i;
+    for ( i = 0; text[i] != '\0'; i++) {
         printf("%s%c", colors[i % color_count], text[i]);
         fflush(stdout);
         SLEEP(50);  // 50ms delay between each character
